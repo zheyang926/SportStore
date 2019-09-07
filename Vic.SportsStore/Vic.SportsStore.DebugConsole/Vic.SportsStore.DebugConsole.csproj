@@ -48,5 +48,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Vic.SportsStore.Domain\Vic.SportsStore.Domain.csproj">
+      <Project>{558182f7-b0f9-4217-b020-6aae94ebf660}</Project>
+      <Name>Vic.SportsStore.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

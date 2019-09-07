@@ -12,7 +12,7 @@ namespace Vic.SportsStore.DebugConsole
     {
         static void Main(string[] args)
         {
-            using (var ctx = new EFDbContext())
+            using (var ctx = new EFDbContext())  // get a table
             {
                 var product = new Product()
                 {

@@ -29,7 +29,7 @@ namespace Vic.SportsStore.DebugConsole
                         Name = $"book_{i}",
                         Price = i + 1m,
                         Description = $"this is an book{i}",
-                        Category = "food"
+                        Category = "book"
                     };
 
                     ctx.Products.Add(product1);

@@ -31,7 +31,8 @@
                     @using (Html.BeginForm("RemoveFromCart", "Cart"))
                     {
                         @Html.Hidden("ProductId", line.Product.ProductId)
-                        //@Html.HiddenFor(x =>line.Product.ProductId)
+                        //@Html.HiddenFor(x =>line.Product.ProductId) //if you use match with system create key, you can use it,
+                        //either you just use Hidden.
                         @Html.HiddenFor(x => x.ReturnUrl)
                         <input class="btn btn-sm btn-warning" type="submit" value="Remove" />
                     }

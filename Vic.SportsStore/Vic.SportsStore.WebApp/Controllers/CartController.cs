@@ -53,5 +53,10 @@ namespace Vic.SportsStore.WebApp.Controllers
             }
             return RedirectToAction("Index", new { returnUrl });
         }
+
+        public PartialViewResult Summary(Cart cart)
+        {
+            return PartialView(cart);
+        }
     }
 }

@@ -6,9 +6,11 @@
 <p>Please enter your details, and we'll ship your goods right away!</p>
 @using (Html.BeginForm())
 {
+    @Html.ValidationSummary()  //get error message from shippingdetails classs
     <h3>Ship to</h3>
     <div class="form-group">
         <label>Name</label>
+        @Html.ValidationSummary()
         @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
     </div>
     <h3>Address</h3>

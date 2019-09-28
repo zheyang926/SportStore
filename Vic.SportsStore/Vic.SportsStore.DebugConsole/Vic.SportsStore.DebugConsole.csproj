@@ -58,7 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Vic.SportsStore.Domain\Vic.SportsStore.Domain.csproj">
-      <Project>{558182f7-b0f9-4217-b020-6aae94ebf660}</Project>
+      <Project>{213f804b-bf81-4916-8821-cdd1fe2f7206}</Project>
       <Name>Vic.SportsStore.Domain</Name>
     </ProjectReference>
   </ItemGroup>

@@ -12,33 +12,34 @@ namespace Vic.SportsStore.DebugConsole
     {
         static void Main(string[] args)
         {
-            using (var ctx = new EFDbContext())  // get a table
+            using (var ctx = new EFDbContext())
             {
                 for (int i = 0; i < 20; i++)
                 {
                     var product1 = new Product()
                     {
                         Name = $"apple_{i}",
-                        Price = i+ 1m,
-                        Description = $"this is an apple{i}",
-                        Category = "food"
+                        Price = i + 1m,
+                        Description = $"this is an apple {i}",
+                        Category = "food",
                     };
 
                     var product2 = new Product()
                     {
                         Name = $"book_{i}",
                         Price = i + 1m,
-                        Description = $"this is an book{i}",
-                        Category = "book"
+                        Description = $"this is a book {i}",
+                        Category = "book",
                     };
 
                     ctx.Products.Add(product1);
                     ctx.Products.Add(product2);
-
                 }
+
                 ctx.SaveChanges();
             }
-            Console.WriteLine("Done");
+
+            Console.WriteLine("done.");
             Console.ReadLine();
         }
     }

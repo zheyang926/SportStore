@@ -15,7 +15,7 @@ namespace Vic.SportsStore.WebApp.Controllers
         public IProductsRepository ProductsRepository { get; set; }
 
         public ViewResult List(string category,int page = 1)
-        {
+        {   
             ProductsListViewModel model = new ProductsListViewModel
             {
                 Products = ProductsRepository
@@ -36,6 +36,7 @@ namespace Vic.SportsStore.WebApp.Controllers
                 },
                 CurrentCategory = category
             };
+
             return View(model);
 
         }

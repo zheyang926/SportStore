@@ -40,7 +40,10 @@ namespace Vic.SportsStore.WebApp.Controllers
             }
             return RedirectToAction("Index", new { returnUrl });
         }
-        public RedirectToRouteResult RemoveFromCart(Cart cart, int productId, string returnUrl)
+        public RedirectToRouteResult RemoveFromCart(
+            Cart cart, 
+            int productId, 
+            string returnUrl)
         {
             Product product = repository.Products
             .FirstOrDefault(p => p.ProductId == productId);

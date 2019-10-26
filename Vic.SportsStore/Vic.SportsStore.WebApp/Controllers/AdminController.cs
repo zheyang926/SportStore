@@ -28,5 +28,21 @@ namespace Vic.SportsStore.WebApp.Controllers
             .FirstOrDefault(p => p.ProductId == productId); //尝试取一个，如果取不到不抛异常。
             return View(product);
         }
+
+        [HttpPost]
+        public ActionResult Edit(Product product)
+        {
+            if (ModelState.IsValid)
+            {
+                repository.SaveProduct(product);
+                TempData["message"] = string.Format("{0} has been saved", product.Name);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                // there is something wrong with the data values
+                return View(product);
+            }
+        }
     }
 }

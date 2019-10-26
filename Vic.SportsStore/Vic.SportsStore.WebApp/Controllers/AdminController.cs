@@ -32,7 +32,7 @@ namespace Vic.SportsStore.WebApp.Controllers
         [HttpPost]
         public ActionResult Edit(Product product)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid)  //后端验证
             {
                 repository.SaveProduct(product);
                 TempData["message"] = string.Format("{0} has been saved", product.Name);

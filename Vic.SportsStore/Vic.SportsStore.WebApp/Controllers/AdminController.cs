@@ -43,6 +43,12 @@ namespace Vic.SportsStore.WebApp.Controllers
                 // there is something wrong with the data values
                 return View(product);
             }
+
+        }
+
+        public ViewResult Create()
+        {
+            return View("Edit", new Product());
         }
     }
 }

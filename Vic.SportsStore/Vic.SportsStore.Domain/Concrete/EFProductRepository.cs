@@ -21,26 +21,26 @@ namespace Vic.SportsStore.Domain.Concrete
             }
 
         public void SaveProduct(Product product)
-        {            
-                if (product.ProductId == 0)
-                {
-                    Context.Products.Add(product); //在products table 中加入
-                }
-                else
-                {
-                    Product dbEntry = Context
-                                    .Products
-                                    .FirstOrDefault(p =>p.ProductId == product.ProductId);
-                    if (dbEntry != null)
-                    {
-                        dbEntry.Name = product.Name;
-                        dbEntry.Description = product.Description;
-                        dbEntry.Price = product.Price;
-                        dbEntry.Category = product.Category;
-                    }
-                }
-                Context.SaveChanges();
+        {
+            if (product.ProductId == 0)
+            {
+                Context.Products.Add(product);
             }
+            else
+            {
+                Product dbEntry = Context.Products.Find(product.ProductId);
+                if (dbEntry != null)
+                {
+                    dbEntry.Name = product.Name;
+                    dbEntry.Description = product.Description;
+                    dbEntry.Price = product.Price;
+                    dbEntry.Category = product.Category;
+                    dbEntry.ImageData = product.ImageData;
+                    dbEntry.ImageMimeType = product.ImageMimeType;
+                }
+            }
+            Context.SaveChanges();
+        }
 
         public Product DeleteProduct(int productId)
         {

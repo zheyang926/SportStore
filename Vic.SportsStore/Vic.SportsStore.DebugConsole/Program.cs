@@ -22,6 +22,9 @@ namespace Vic.SportsStore.DebugConsole
                         Price = i + 1m,
                         Description = $"this is an apple {i}",
                         Category = "food",
+                        ImageData = null,
+                        ImageMimeType = null,
+
                     };
 
                     var product2 = new Product()
@@ -30,6 +33,8 @@ namespace Vic.SportsStore.DebugConsole
                         Price = i + 1m,
                         Description = $"this is a book {i}",
                         Category = "book",
+                        ImageData = null,
+                        ImageMimeType = null,
                     };
 
                     ctx.Products.Add(product1);

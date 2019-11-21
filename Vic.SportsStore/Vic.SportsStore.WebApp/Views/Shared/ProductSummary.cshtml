@@ -1,4 +1,5 @@
 ﻿@model Vic.SportsStore.Domain.Entities.Product
+
 <div class="well">
     @if (Model.ImageData != null)
     {
@@ -7,12 +8,13 @@
                  src="@Url.Action("GetImage", "Product", new { Model.ProductId })" />
         </div>
     }
+
     <h3>
         <strong>@Model.Name</strong>
         <span class="pull-right label label-primary">@Model.Price.ToString("c")</span>
     </h3>
-    @using (Html.BeginForm("AddToCart", "Cart")) //新建一个form，调用cart下面的addtocart方法,
-                                                //取去productid,并生成"Productid"但是不显示在网页上
+
+    @using (Html.BeginForm("AddToCart", "Cart"))
     {
         <div class="pull-right">
             @Html.HiddenFor(x => x.ProductId)
@@ -20,5 +22,6 @@
             <input type="submit" class="btn btn-success" value="Add to cart" />
         </div>
     }
+
     <span class="lead"> @Model.Description</span>
 </div>

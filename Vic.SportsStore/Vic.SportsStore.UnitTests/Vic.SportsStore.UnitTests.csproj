@@ -5,7 +5,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CDDF0E1D-ED7E-40E7-A466-6D72661D9D20}</ProjectGuid>
+    <ProjectGuid>{29AA2564-020C-4E32-9A7F-1BE353D75037}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Vic.SportsStore.UnitTests</RootNamespace>
@@ -70,12 +70,12 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Vic.SportsStore.Domain\Vic.SportsStore.Domain.csproj">
-      <Project>{558182f7-b0f9-4217-b020-6aae94ebf660}</Project>
-      <Name>Vic.SportsStore.Domain</Name>
+    <ProjectReference Include="..\Vic.SportsStore.Domain\SportsStore.Domain.csproj">
+      <Project>{213f804b-bf81-4916-8821-cdd1fe2f7206}</Project>
+      <Name>SportsStore.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\Vic.SportsStore.WebApp\Vic.SportsStore.WebApp.csproj">
-      <Project>{3a9e0da4-2e2a-4384-b43b-59e288d5cce0}</Project>
+      <Project>{f14a8af8-b571-4578-ba74-675876ac283f}</Project>
       <Name>Vic.SportsStore.WebApp</Name>
     </ProjectReference>
   </ItemGroup>

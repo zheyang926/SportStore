@@ -24,20 +24,12 @@ namespace Vic.SportsStore.WebApp
                 .RegisterControllers(typeof(MvcApplication).Assembly)
                 .PropertiesAutowired();
 
-            //Mock<IProductsRepository> mock = new Mock<IProductsRepository>();
-
-            //mock
-            //    .Setup(m => m.Products)
-            //    .Returns(new List<Product>
-            //    {
-            //        new Product { Name = "Football", Price = 25 },
-            //        new Product { Name = "Surf board", Price = 179 },
-            //        new Product { Name = "Running shoes", Price = 95 }
-            //    });
-
-            //builder.RegisterInstance<IProductsRepository>(mock.Object);
             builder
                 .RegisterInstance<IProductsRepository>(new EFProductRepository())
+                .PropertiesAutowired();
+
+            builder
+                .RegisterInstance<IAuthProvider>(new FormsAuthProvider()) ///DbAuthProvider()
                 .PropertiesAutowired();
 
             builder
@@ -45,11 +37,8 @@ namespace Vic.SportsStore.WebApp
                 .PropertiesAutowired();
 
             builder
-                .RegisterInstance<IOrderProcessor>(new EmailOrderProcessor(new EmailSettings()))
-                .PropertiesAutowired();
-
-            builder
-                .RegisterInstance<IAuthProvider>(new FormsAuthProvider())
+                .RegisterInstance<IOrderProcessor>(
+                new EmailOrderProcessor(new EmailSettings()))
                 .PropertiesAutowired();
 
             var container = builder.Build();

@@ -9,4 +9,5 @@ namespace Vic.SportsStore.WebApp.Abstract
     {
         bool Authenticate(string username, string password);
     }
+
 }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,7 +16,7 @@ namespace Vic.SportsStore.WebApp
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             IocConfig.ConfigIoc();
-            ModelBinders.Binders.Add(typeof(Cart), new CartModelBinder()); //只要跟cart有关的，都用cartmodlebinder绑定
+            ModelBinders.Binders.Add(typeof(Cart), new CartModelBinder());
         }
     }
 }

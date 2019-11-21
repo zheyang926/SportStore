@@ -8,17 +8,17 @@ using Vic.SportsStore.Domain.Entities;
 
 namespace Vic.SportsStore.Domain.Concrete
 {
-    public class EFProductRepository:IProductsRepository
-    { 
-           public EFDbContext Context { get; set; }
+    public class EFProductRepository : IProductsRepository
+    {
+        public EFDbContext Context { get; set; }
 
-            public IEnumerable<Product> Products
+        public IEnumerable<Product> Products
+        {
+            get
             {
-                get
-                 {
-                     return Context.Products;
-                 }
+                return Context.Products;
             }
+        }
 
         public void SaveProduct(Product product)
         {
@@ -28,7 +28,10 @@ namespace Vic.SportsStore.Domain.Concrete
             }
             else
             {
-                Product dbEntry = Context.Products.Find(product.ProductId);
+                Product dbEntry = Context
+                    .Products
+                    .FirstOrDefault(p => p.ProductId == product.ProductId);
+                
                 if (dbEntry != null)
                 {
                     dbEntry.Name = product.Name;
@@ -39,19 +42,22 @@ namespace Vic.SportsStore.Domain.Concrete
                     dbEntry.ImageMimeType = product.ImageMimeType;
                 }
             }
+
             Context.SaveChanges();
         }
 
         public Product DeleteProduct(int productId)
         {
             Product dbEntry = Context.Products.Find(productId);
+
             if (dbEntry != null)
             {
                 Context.Products.Remove(dbEntry);
                 Context.SaveChanges();
             }
+
             return dbEntry;
         }
-    }
-    }
 
+    }
+}

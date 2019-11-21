@@ -10,6 +10,7 @@ namespace Vic.SportsStore.WebApp.Controllers
     public class NavController : Controller
     {
         private IProductsRepository repository;
+
         public NavController(IProductsRepository repo)
         {
             repository = repo;
@@ -19,11 +20,12 @@ namespace Vic.SportsStore.WebApp.Controllers
         {
             ViewBag.SelectedCategory = category;
             IEnumerable<string> categories = repository
-            .Products
-            .Select(x => x.Category)
-            .Distinct()
-            .OrderBy(x => x);
+                .Products
+                .Select(x => x.Category)
+                .Distinct()
+                .OrderBy(x => x);
             return PartialView("FlexMenu", categories);
         }
+
     }
 }

@@ -8,7 +8,7 @@ using Vic.SportsStore.Domain.Entities;
 
 namespace Vic.SportsStore.WebApp.Controllers
 {
-    [Authorize]    //admin下面的所有配置必须验证
+    [Authorize]
     public class AdminController : Controller
     {
         private IProductsRepository repository;
@@ -17,16 +17,18 @@ namespace Vic.SportsStore.WebApp.Controllers
         {
             repository = repo;
         }
+
         public ViewResult Index()
         {
             return View(repository.Products);
         }
-        [AllowAnonymous]   //虽然在admin下面所有的操作都需要验证，但是如果验证了allowanonymous后，这个方法不需要验证
+
         public ViewResult Edit(int productId)
         {
             Product product = repository
-            .Products
-            .FirstOrDefault(p => p.ProductId == productId); //尝试取一个，如果取不到不抛异常。
+                .Products
+                .FirstOrDefault(p => p.ProductId == productId);
+
             return View(product);
         }
 
@@ -60,10 +62,12 @@ namespace Vic.SportsStore.WebApp.Controllers
         public ActionResult Delete(int productId)
         {
             Product deletedProduct = repository.DeleteProduct(productId);
+
             if (deletedProduct != null)
             {
                 TempData["message"] = string.Format("{0} was deleted", deletedProduct.Name);
             }
+
             return RedirectToAction("Index");
         }
     }

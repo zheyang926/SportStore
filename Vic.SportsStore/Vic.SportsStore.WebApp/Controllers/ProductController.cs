@@ -15,17 +15,16 @@ namespace Vic.SportsStore.WebApp.Controllers
 
         public IProductsRepository ProductsRepository { get; set; }
 
-        public ViewResult List(string category,int page = 1)
-        {   
+        public ViewResult List(string category, int page = 1)
+        {
             ProductsListViewModel model = new ProductsListViewModel
             {
                 Products = ProductsRepository
-                         .Products
-                         .Where(p => category == null || p.Category == category) //get all products
-                         .OrderBy(p => p.ProductId)
-                         .Skip((page - 1) * PageSize)
-                         .Take(PageSize),
-
+                .Products
+                .Where(p => category == null || p.Category == category)
+                .OrderBy(p => p.ProductId)
+                .Skip((page - 1) * PageSize)
+                .Take(PageSize),
                 PagingInfo = new PagingInfo
                 {
                     CurrentPage = page,
@@ -39,14 +38,14 @@ namespace Vic.SportsStore.WebApp.Controllers
             };
 
             return View(model);
-
         }
 
         public FileContentResult GetImage(int productId)
         {
             Product prod = ProductsRepository
-            .Products
-            .FirstOrDefault(p => p.ProductId == productId);
+                .Products
+                .FirstOrDefault(p => p.ProductId == productId);
+
             if (prod != null)
             {
                 return File(prod.ImageData, prod.ImageMimeType);
@@ -56,6 +55,5 @@ namespace Vic.SportsStore.WebApp.Controllers
                 return null;
             }
         }
-
     }
 }

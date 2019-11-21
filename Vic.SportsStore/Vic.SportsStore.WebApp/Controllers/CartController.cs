@@ -14,12 +14,9 @@ namespace Vic.SportsStore.WebApp.Controllers
         private IProductsRepository repository;
         private IOrderProcessor orderProcessor;
 
-        public CartController(IProductsRepository repo)
-        {
-            repository = repo;
-        }
-
-        public CartController(IProductsRepository repo, IOrderProcessor proc)
+        public CartController(
+            IProductsRepository repo,
+            IOrderProcessor proc)
         {
             repository = repo;
             orderProcessor = proc;
@@ -35,22 +32,23 @@ namespace Vic.SportsStore.WebApp.Controllers
         }
 
         public RedirectToRouteResult AddToCart(
-            Cart cart, 
-            int productId, 
+            Cart cart,
+            int productId,
             string returnUrl)
         {
-            Product product = repository.Products
-            .FirstOrDefault(p => p.ProductId == productId);
+            Product product = repository
+                .Products
+                .FirstOrDefault(p => p.ProductId == productId);
+
             if (product != null)
             {
                 cart.AddItem(product, 1);
             }
+
             return RedirectToAction("Index", new { returnUrl });
         }
-        public RedirectToRouteResult RemoveFromCart(
-            Cart cart, 
-            int productId, 
-            string returnUrl)
+
+        public RedirectToRouteResult RemoveFromCart(Cart cart, int productId, string returnUrl)
         {
             Product product = repository.Products
             .FirstOrDefault(p => p.ProductId == productId);
@@ -71,13 +69,14 @@ namespace Vic.SportsStore.WebApp.Controllers
             return View(new ShippingDetails());
         }
 
-        [HttpPost]  //just recive post send 
+        [HttpPost]
         public ViewResult Checkout(Cart cart, ShippingDetails shippingDetails)
         {
             if (cart.Lines.Count() == 0)
             {
                 ModelState.AddModelError("", "Sorry, your cart is empty!");
             }
+
             if (ModelState.IsValid)
             {
                 orderProcessor.ProcessOrder(cart, shippingDetails);
@@ -89,5 +88,6 @@ namespace Vic.SportsStore.WebApp.Controllers
                 return View(shippingDetails);
             }
         }
+
     }
 }

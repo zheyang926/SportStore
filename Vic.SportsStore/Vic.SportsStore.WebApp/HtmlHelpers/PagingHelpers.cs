@@ -11,10 +11,10 @@ namespace Vic.SportsStore.WebApp.HtmlHelpers
     public static class PagingHelpers
     {
         public static MvcHtmlString PageLinks(
-            this HtmlHelper html, 
-            PagingInfo pagingInfo, 
+            this HtmlHelper html,
+            PagingInfo pagingInfo,
             Func<int, string> pageUrl)
-           {
+        {
             StringBuilder result = new StringBuilder();
             for (int i = 1; i <= pagingInfo.TotalPages; i++)
             {
@@ -32,4 +32,5 @@ namespace Vic.SportsStore.WebApp.HtmlHelpers
             return MvcHtmlString.Create(result.ToString());
         }
     }
+
 }

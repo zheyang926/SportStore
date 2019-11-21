@@ -1,8 +1,9 @@
 ﻿using System.Web.Mvc;
 using Vic.SportsStore.Domain.Entities;
+
 namespace Vic.SportsStore.WebApp.Infrastructure.Binders
 {
-    public class CartModelBinder : IModelBinder  //system imodelbinder
+    public class CartModelBinder : IModelBinder
     {
         private const string sessionKey = "Cart";
 
@@ -19,11 +20,13 @@ namespace Vic.SportsStore.WebApp.Infrastructure.Binders
             if (cart == null)
             {
                 cart = new Cart();
+
                 if (controllerContext.HttpContext.Session != null)
                 {
                     controllerContext.HttpContext.Session[sessionKey] = cart;
                 }
             }
+
             // return the cart
             return cart;
         }

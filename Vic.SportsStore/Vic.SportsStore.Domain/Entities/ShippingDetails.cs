@@ -14,9 +14,10 @@ namespace Vic.SportsStore.Domain.Entities
 
         [Required(ErrorMessage = "Please enter the first address line")]
         [Display(Name = "Line 1")]
+
         public string Line1 { get; set; }
 
-        [Display(Name = "Line 2")]
+        [Display(Name = "Line addtional")]
         public string Line2 { get; set; }
 
         [Display(Name = "Line 3")]
@@ -27,10 +28,12 @@ namespace Vic.SportsStore.Domain.Entities
 
         [Required(ErrorMessage = "Please enter a state name")]
         public string State { get; set; }
+
         public string Zip { get; set; }
 
         [Required(ErrorMessage = "Please enter a country name")]
         public string Country { get; set; }
+
         public bool GiftWrap { get; set; }
     }
 }

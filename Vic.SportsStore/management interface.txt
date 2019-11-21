@@ -1,0 +1,3 @@
+Path: localhost:50625/admin/index
+User: admin
+Password: pwd
